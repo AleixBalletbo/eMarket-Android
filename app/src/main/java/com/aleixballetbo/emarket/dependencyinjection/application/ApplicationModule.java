@@ -3,8 +3,12 @@ package com.aleixballetbo.emarket.dependencyinjection.application;
 import android.content.Context;
 
 import com.aleixballetbo.data.dependencyinjection.DataModule;
+import com.aleixballetbo.data.executor.JobExecutor;
 import com.aleixballetbo.emarket.App;
+import com.aleixballetbo.emarket.UIThread;
 import com.aleixballetbo.emarket.dependencyinjection.qualifier.ForApp;
+import com.aleixballetbo.executor.PostExecutionThread;
+import com.aleixballetbo.executor.ThreadExecutor;
 
 import javax.inject.Singleton;
 
@@ -28,7 +32,6 @@ public class ApplicationModule {
         return app;
     }
 
-    /*
 
     @Provides
     @Singleton
@@ -41,11 +44,4 @@ public class ApplicationModule {
     public PostExecutionThread providePostExecutionThread() {
         return new UIThread();
     }
-
-    @Provides
-    @Singleton
-    ImageLoader providesImageLoader(PicassoLoader picassoLoader) {
-        return picassoLoader;
-    }
-    */
 }
