@@ -2,7 +2,7 @@ package com.aleixballetbo.emarket.dependencyinjection.activity;
 
 import com.aleixballetbo.emarket.dependencyinjection.application.ViewModule;
 import com.aleixballetbo.emarket.dependencyinjection.scope.PerActivity;
-import com.aleixballetbo.emarket.main.MainActivity;
+import com.aleixballetbo.emarket.ProductList.ProductListActivity;
 
 import dagger.Subcomponent;
 
@@ -10,5 +10,5 @@ import dagger.Subcomponent;
 @Subcomponent(modules = {ActivityModule.class, ViewModule.class})
 public interface ActivityComponent {
 
-    void inject(MainActivity activity);
+    void inject(ProductListActivity activity);
 }

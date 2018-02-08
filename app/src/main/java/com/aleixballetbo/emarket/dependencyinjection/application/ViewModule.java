@@ -1,7 +1,7 @@
 package com.aleixballetbo.emarket.dependencyinjection.application;
 
 
-import com.aleixballetbo.emarket.main.MainView;
+import com.aleixballetbo.emarket.ProductList.ProductListView;
 
 import dagger.Module;
 import dagger.Provides;
@@ -9,14 +9,14 @@ import dagger.Provides;
 @Module
 public class ViewModule {
 
-    private MainView view;
+    private ProductListView view;
 
-    public ViewModule(MainView view) {
+    public ViewModule(ProductListView view) {
         this.view = view;
     }
 
     @Provides
-    MainView providesMainView(){
+    ProductListView providesMainView(){
         return view;
     }
 }
