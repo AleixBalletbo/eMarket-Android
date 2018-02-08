@@ -22,19 +22,11 @@ public class ApiDataSource implements DataSource {
     public ApiDataSource () {
     }
 
+    @Inject
+    Retrofit retrofit;
+
     @Override
     public List<Product> getProducts() throws IOException {
-
-        final OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                .readTimeout(30, TimeUnit.SECONDS)
-                .connectTimeout(30, TimeUnit.SECONDS)
-                .build();
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://emarket-backend.herokuapp.com/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(okHttpClient)
-                .build();
 
         ProductService productService = retrofit.create(ProductService.class);
 
