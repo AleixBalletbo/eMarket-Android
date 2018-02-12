@@ -1,6 +1,5 @@
 package com.aleixballetbo.emarket.ProductList;
 
-import android.util.Log;
 
 import com.aleixballetbo.entities.Product;
 import com.aleixballetbo.exception.ErrorBundle;
@@ -24,7 +23,7 @@ public class ProductListPresenter {
         getProductsInteractor.execute(new GetProductsInteractor.GetProductsCallback() {
             @Override
             public void onError(ErrorBundle errorBundle) {
-
+                view.showError(errorBundle.getErrorMessage());
             }
 
             @Override

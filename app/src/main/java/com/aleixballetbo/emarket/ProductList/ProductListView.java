@@ -7,4 +7,6 @@ import java.util.List;
 public interface ProductListView {
 
     void showData(List<Product> products);
+
+    void showError(String error);
 }

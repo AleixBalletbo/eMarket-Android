@@ -1,12 +1,11 @@
 package com.aleixballetbo.emarket.ProductList;
 
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import com.aleixballetbo.emarket.App;
 import com.aleixballetbo.emarket.R;
@@ -62,5 +61,11 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
     @Override
     public void showData(List<Product> products) {
         productAdapter.setData(products);
+    }
+
+    @Override
+    public void showError(String error) {
+        Toast t = Toast.makeText(getApplicationContext(), error, Toast.LENGTH_LONG);
+        t.show();
     }
 }

@@ -9,6 +9,7 @@ public class Product {
     private String description;
     private String owner;
 
+
     public Product(String id, String name, float price, String description, String owner) {
         this.id = id;
         this.name = name;
@@ -16,7 +17,6 @@ public class Product {
         this.description = description;
         this.owner = owner;
     }
-
 
     public String getId() {
         return id;
