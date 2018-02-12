@@ -14,6 +14,6 @@ public interface ApplicationComponent {
 
     void inject(App application);
 
-    ActivityComponent plus(ActivityModule activityModule, ViewModule viewModule);
+    ActivityComponent plus(ActivityModule activityModule, ViewPresenterModule viewModule);
 
 }

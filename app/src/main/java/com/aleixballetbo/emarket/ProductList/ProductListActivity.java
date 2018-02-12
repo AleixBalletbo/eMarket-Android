@@ -10,7 +10,7 @@ import android.widget.Toast;
 import com.aleixballetbo.emarket.App;
 import com.aleixballetbo.emarket.R;
 import com.aleixballetbo.emarket.dependencyinjection.activity.ActivityModule;
-import com.aleixballetbo.emarket.dependencyinjection.application.ViewModule;
+import com.aleixballetbo.emarket.dependencyinjection.application.ViewPresenterModule;
 import com.aleixballetbo.emarket.dependencyinjection.qualifier.ForActivity;
 import com.aleixballetbo.entities.Product;
 
@@ -46,7 +46,7 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
         ((App) getApplication())
                 .getComponent()
                 .plus(new ActivityModule(this),
-                        new ViewModule(this))
+                        new ViewPresenterModule(this))
                 .inject(this);
 
         setUpRecyclerView();

@@ -7,13 +7,10 @@ import com.aleixballetbo.interactor.GetProductsInteractor;
 
 import java.util.List;
 
-import javax.inject.Inject;
-
 public class ProductListPresenter {
     private final ProductListView view;
     private final GetProductsInteractor getProductsInteractor;
 
-    @Inject
     public ProductListPresenter(ProductListView view, GetProductsInteractor getProductsInteractor) {
         this.view = view;
         this.getProductsInteractor = getProductsInteractor;
