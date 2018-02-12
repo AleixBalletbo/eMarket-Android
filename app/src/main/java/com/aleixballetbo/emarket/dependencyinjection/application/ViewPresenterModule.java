@@ -18,7 +18,7 @@ public class ViewPresenterModule {
     }
 
     @Provides
-    ProductListView providesMainView(){
+    public ProductListView providesMainView(){
         return view;
     }
 

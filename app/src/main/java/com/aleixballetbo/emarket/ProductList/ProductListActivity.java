@@ -10,7 +10,6 @@ import android.widget.Toast;
 import com.aleixballetbo.emarket.App;
 import com.aleixballetbo.emarket.R;
 import com.aleixballetbo.emarket.dependencyinjection.activity.ActivityModule;
-import com.aleixballetbo.emarket.dependencyinjection.application.ViewPresenterModule;
 import com.aleixballetbo.emarket.dependencyinjection.qualifier.ForActivity;
 import com.aleixballetbo.entities.Product;
 
@@ -43,10 +42,10 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
 
         ButterKnife.bind(this);
 
-        ((App) getApplication())
-                .getComponent()
+        App app = (App) getApplication();
+        app.getComponent()
                 .plus(new ActivityModule(this),
-                        new ViewPresenterModule(this))
+                        app.getViewPresenterModule(this))
                 .inject(this);
 
         setUpRecyclerView();
