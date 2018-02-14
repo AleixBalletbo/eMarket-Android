@@ -28,4 +28,9 @@ public class ProductDataRepository implements ProductRepository{
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void getProductDetail(GetProductDetailCallback callback) {
+
+    }
 }

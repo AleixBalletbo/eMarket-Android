@@ -2,6 +2,7 @@ package com.aleixballetbo.emarket;
 
 import android.app.Application;
 
+import com.aleixballetbo.emarket.ProductDetail.ProductDetailView;
 import com.aleixballetbo.emarket.ProductList.ProductListView;
 import com.aleixballetbo.emarket.dependencyinjection.application.ApplicationComponent;
 import com.aleixballetbo.emarket.dependencyinjection.application.ApplicationModule;
@@ -27,6 +28,10 @@ public class App extends Application {
     }
 
     public ViewPresenterModule getViewPresenterModule (ProductListView view) {
+        return new ViewPresenterModule(view);
+    }
+
+    public ViewPresenterModule getViewPresenterModule (ProductDetailView view) {
         return new ViewPresenterModule(view);
     }
 }
