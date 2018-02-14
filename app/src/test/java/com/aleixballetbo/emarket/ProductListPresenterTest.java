@@ -1,6 +1,8 @@
-package com.aleixballetbo.emarket.ProductList;
+package com.aleixballetbo.emarket;
 
 
+import com.aleixballetbo.emarket.ProductList.ProductListPresenter;
+import com.aleixballetbo.emarket.ProductList.ProductListView;
 import com.aleixballetbo.entities.Product;
 import com.aleixballetbo.exception.ErrorBundle;
 import com.aleixballetbo.interactor.DefaultCallback;
