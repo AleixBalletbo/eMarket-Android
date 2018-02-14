@@ -11,7 +11,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-public class GetProductsInteractor extends BaseUseCase<List<Product>> implements Interactor<List<Product>> {
+public class GetProductsInteractor extends BaseUseCase<List<Product>> implements Interactor<Void, List<Product>> {
 
     private GetProductsCallback callback;
 
@@ -45,7 +45,7 @@ public class GetProductsInteractor extends BaseUseCase<List<Product>> implements
     }
 
     @Override
-    public <R extends DefaultCallback<List<Product>>> void execute(R defaultCallback) {
+    public <R extends DefaultCallback<List<Product>>> void execute(Void input, R defaultCallback) {
         this.callback = ((GetProductsCallback) defaultCallback);
         executor.execute(this);
     }

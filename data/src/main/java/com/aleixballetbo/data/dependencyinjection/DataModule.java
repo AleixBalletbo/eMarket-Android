@@ -5,6 +5,7 @@ import com.aleixballetbo.ProductRepository;
 import com.aleixballetbo.data.repository.ProductDataRepository;
 import com.aleixballetbo.data.repository.datasource.DataSource;
 import com.aleixballetbo.data.repository.datasource.cloud.ApiDataSource;
+import com.aleixballetbo.data.repository.datasource.cloud.ProductService;
 
 import java.util.concurrent.TimeUnit;
 
@@ -29,6 +30,12 @@ public class DataModule {
     @Singleton
     public DataSource providesDataSource(ApiDataSource apiDataSource){
         return apiDataSource;
+    }
+
+    @Provides
+    @Singleton
+    public ProductService providesProductService (Retrofit retrofit) {
+        return retrofit.create(ProductService.class);
     }
 
     @Provides

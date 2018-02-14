@@ -17,7 +17,7 @@ public class ProductListPresenter {
     }
 
     public void onStart () {
-        getProductsInteractor.execute(new GetProductsInteractor.GetProductsCallback() {
+        getProductsInteractor.execute(null, new GetProductsInteractor.GetProductsCallback() {
             @Override
             public void onError(ErrorBundle errorBundle) {
                 view.showError(errorBundle.getErrorMessage());

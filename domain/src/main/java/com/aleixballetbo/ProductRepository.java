@@ -14,5 +14,5 @@ public interface ProductRepository {
 
     void getProducts(GetProductsCallback callback);
 
-    void getProductDetail(GetProductDetailCallback callback);
+    void getProductDetail(String productId, GetProductDetailCallback callback);
 }

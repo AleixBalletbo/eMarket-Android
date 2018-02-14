@@ -9,7 +9,7 @@ import com.aleixballetbo.executor.ThreadExecutor;
 
 import javax.inject.Inject;
 
-public class GetProductDetailInteractor extends BaseUseCase<Product> implements Interactor<Product> {
+public class GetProductDetailInteractor extends BaseUseCase<Product> implements Interactor<String, Product> {
 
     private GetProductDetailCallback callback;
 
@@ -29,6 +29,7 @@ public class GetProductDetailInteractor extends BaseUseCase<Product> implements 
 
     private final ProductRepository repository;
     private final ThreadExecutor executor;
+    private String productId;
 
     @Inject
     public GetProductDetailInteractor(PostExecutionThread postExecutionThread, ThreadExecutor executor, ProductRepository repository) {
@@ -39,11 +40,12 @@ public class GetProductDetailInteractor extends BaseUseCase<Product> implements 
 
     @Override
     public void run() {
-        repository.getProductDetail(dataCallback);
+        repository.getProductDetail(productId, dataCallback);
     }
 
     @Override
-    public <R extends DefaultCallback<Product>> void execute(R defaultCallback) {
+    public <R extends DefaultCallback<Product>> void execute(String input, R defaultCallback) {
+        this.productId = input;
         this.callback = ((GetProductDetailCallback) defaultCallback);
         executor.execute(this);
     }

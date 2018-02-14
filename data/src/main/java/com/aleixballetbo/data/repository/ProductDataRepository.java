@@ -30,7 +30,12 @@ public class ProductDataRepository implements ProductRepository{
     }
 
     @Override
-    public void getProductDetail(GetProductDetailCallback callback) {
-
+    public void getProductDetail(String productId, GetProductDetailCallback callback) {
+        try {
+            Product product = dataSource.getProductDetail(productId);
+            callback.onSuccess(product);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

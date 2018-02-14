@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.nullable;
 import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.verify;
 
@@ -45,10 +46,10 @@ public class ProductListPresenterTest {
         doAnswer(new Answer() {
             @Override
             public Object answer(InvocationOnMock invocation) throws Throwable {
-                ((DefaultCallback<List<Product>>) invocation.getArgument(0)).onSuccess(productList);
+                ((DefaultCallback<List<Product>>) invocation.getArgument(1)).onSuccess(productList);
                 return null;
             }
-        }).when(getProductsInteractor).execute(any(DefaultCallback.class));
+        }).when(getProductsInteractor).execute(nullable(Void.class), any(DefaultCallback.class));
 
         productListPresenter.onStart();
 
@@ -74,10 +75,10 @@ public class ProductListPresenterTest {
         doAnswer(new Answer() {
             @Override
             public Object answer(InvocationOnMock invocation) throws Throwable {
-                ((DefaultCallback<List<Product>>) invocation.getArgument(0)).onError(errorBundle);
+                ((DefaultCallback<List<Product>>) invocation.getArgument(1)).onError(errorBundle);
                 return null;
             }
-        }).when(getProductsInteractor).execute(any(DefaultCallback.class));
+        }).when(getProductsInteractor).execute(nullable(Void.class), any(DefaultCallback.class));
 
         productListPresenter.onStart();
 

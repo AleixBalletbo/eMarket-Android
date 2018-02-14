@@ -14,8 +14,8 @@ public class ProductDetailPresenter {
         this.getProductDetailInteractor = getProductDetailInteractor;
     }
 
-    public void onStart () {
-        getProductDetailInteractor.execute(new GetProductDetailInteractor.GetProductDetailCallback() {
+    public void onStart (String id) {
+        getProductDetailInteractor.execute(id, new GetProductDetailInteractor.GetProductDetailCallback() {
             @Override
             public void onError(ErrorBundle errorBundle) {
                 view.showError(errorBundle.getErrorMessage());

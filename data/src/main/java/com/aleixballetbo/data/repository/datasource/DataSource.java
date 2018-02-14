@@ -9,4 +9,6 @@ import java.util.List;
 public interface DataSource {
 
     List<Product> getProducts () throws IOException;
+
+    Product getProductDetail (String productId) throws IOException;
 }

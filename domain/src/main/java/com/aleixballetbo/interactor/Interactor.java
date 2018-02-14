@@ -1,9 +1,9 @@
 package com.aleixballetbo.interactor;
 
 
-public interface Interactor<ReturnType> extends Runnable{
+public interface Interactor<InputType, ReturnType> extends Runnable{
 
     void run();
 
-    <R extends DefaultCallback<ReturnType>> void execute(R defaultCallback);
+    <R extends DefaultCallback<ReturnType>> void execute(InputType inputType, R defaultCallback);
 }
