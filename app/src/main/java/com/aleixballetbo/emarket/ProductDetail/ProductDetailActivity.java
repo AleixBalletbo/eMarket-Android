@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.aleixballetbo.emarket.App;
 import com.aleixballetbo.emarket.R;
@@ -14,6 +16,7 @@ import com.aleixballetbo.entities.Product;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class ProductDetailActivity extends AppCompatActivity implements ProductDetailView {
@@ -26,6 +29,15 @@ public class ProductDetailActivity extends AppCompatActivity implements ProductD
     @Inject
     @ForActivity
     Context context;
+
+    @BindView(R.id.nameText)
+    TextView productName;
+    @BindView(R.id.priceText)
+    TextView productPrice;
+    @BindView(R.id.ownerText)
+    TextView productOwner;
+    @BindView(R.id.descriptionText)
+    TextView productDescription;
 
     public static void actionOpenDetails(Context context, String id, ActivityOptionsCompat options) {
         Intent intent = new Intent(context, ProductDetailActivity.class);
@@ -55,12 +67,17 @@ public class ProductDetailActivity extends AppCompatActivity implements ProductD
     }
 
     @Override
-    public void showData(Product products) {
-
+    public void showData(Product product) {
+        productName.setText(product.getName());
+        String price = String.valueOf(product.getPrice()) + "€";
+        productPrice.setText(price);
+        productOwner.setText(product.getOwner());
+        productDescription.setText(product.getDescription());
     }
 
     @Override
     public void showError(String error) {
-
+        Toast t = Toast.makeText(getApplicationContext(), error, Toast.LENGTH_LONG);
+        t.show();
     }
 }

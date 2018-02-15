@@ -1,6 +1,8 @@
 package com.aleixballetbo.data.repository.datasource.cloud;
 
 import com.aleixballetbo.data.repository.datasource.DataSource;
+import com.aleixballetbo.data.repository.datasource.cloud.model.Mapper;
+import com.aleixballetbo.data.repository.datasource.cloud.model.ProductDTO;
 import com.aleixballetbo.entities.Product;
 
 import java.io.IOException;
@@ -22,13 +24,13 @@ public class ApiDataSource implements DataSource {
 
     @Override
     public List<Product> getProducts() throws IOException {
-        Response<List<Product>> productsResponse = productService.getProducts().execute();
-        return productsResponse.body();
+        Response<List<ProductDTO>> productsResponse = productService.getProducts().execute();
+        return Mapper.map(productsResponse.body());
     }
 
     @Override
     public Product getProductDetail(String productId) throws IOException {
-        Response<Product> productResponse = productService.getProductDetail(productId).execute();
-        return productResponse.body();
+        Response<ProductDTO> productResponse = productService.getProductDetail(productId).execute();
+        return Mapper.map(productResponse.body());
     }
 }

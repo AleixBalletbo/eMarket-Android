@@ -5,12 +5,12 @@ public class Product {
 
     private String id;
     private String name;
-    private float price;
+    private int price;
     private String description;
     private String owner;
 
 
-    public Product(String id, String name, float price, String description, String owner) {
+    public Product(String id, String name, int price, String description, String owner) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -26,7 +26,7 @@ public class Product {
         return name;
     }
 
-    public float getPrice() {
+    public int getPrice() {
         return price;
     }
 

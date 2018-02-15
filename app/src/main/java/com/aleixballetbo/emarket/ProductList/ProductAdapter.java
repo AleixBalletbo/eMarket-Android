@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.aleixballetbo.emarket.ProductDetail.ProductDetailActivity;
 import com.aleixballetbo.emarket.R;
 import com.aleixballetbo.emarket.dependencyinjection.qualifier.ForActivity;
 import com.aleixballetbo.entities.Product;
@@ -71,7 +72,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         }
 
         public void bindClick(final String id) {
-
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ProductDetailActivity.actionOpenDetails(context, id, null);
+                }
+            });
         }
     }
 }

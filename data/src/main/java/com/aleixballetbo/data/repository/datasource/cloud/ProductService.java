@@ -1,7 +1,7 @@
 package com.aleixballetbo.data.repository.datasource.cloud;
 
 
-import com.aleixballetbo.entities.Product;
+import com.aleixballetbo.data.repository.datasource.cloud.model.ProductDTO;
 
 import java.util.List;
 
@@ -12,8 +12,8 @@ import retrofit2.http.Path;
 public interface ProductService {
 
     @GET("products")
-    Call<List<Product>> getProducts();
+    Call<List<ProductDTO>> getProducts();
 
     @GET("products/{productId}")
-    Call<Product> getProductDetail(@Path("productId") String id);
+    Call<ProductDTO> getProductDetail(@Path("productId") String id);
 }
