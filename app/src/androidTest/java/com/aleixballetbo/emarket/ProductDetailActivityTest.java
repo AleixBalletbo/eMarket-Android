@@ -6,12 +6,12 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.aleixballetbo.emarket.ProductList.ProductListActivity;
-import com.aleixballetbo.emarket.ProductList.ProductListPresenter;
-import com.aleixballetbo.emarket.ProductList.ProductListView;
+import com.aleixballetbo.emarket.ProductDetail.ProductDetailActivity;
+import com.aleixballetbo.emarket.ProductDetail.ProductDetailPresenter;
+import com.aleixballetbo.emarket.ProductDetail.ProductDetailView;
 import com.aleixballetbo.emarket.dependencyinjection.application.ViewPresenterModule;
 import com.aleixballetbo.entities.Product;
-import com.aleixballetbo.interactor.GetProductsInteractor;
+import com.aleixballetbo.interactor.GetProductDetailInteractor;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -19,9 +19,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
@@ -36,23 +33,23 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @RunWith(AndroidJUnit4.class)
-public class ProductListActivityTest {
+public class ProductDetailActivityTest {
 
     @Mock
     ViewPresenterModule module;
 
     @Mock
-    ProductListPresenter presenter;
+    ProductDetailPresenter presenter;
 
     @Rule
-    public ActivityTestRule<ProductListActivity> activity = new ActivityTestRule<>(ProductListActivity.class, false, false);
+    public ActivityTestRule<ProductDetailActivity> activity = new ActivityTestRule<>(ProductDetailActivity.class, false, false);
 
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
 
-        when(module.providesMainView()).thenReturn(mock(ProductListView.class));
-        when(module.provideProductListPresenter(any(ProductListView.class), any(GetProductsInteractor.class))).thenReturn(presenter);
+        when(module.providesDetailView()).thenReturn(mock(ProductDetailView.class));
+        when(module.provideProductDetailPresenter(any(ProductDetailView.class), any(GetProductDetailInteractor.class))).thenReturn(presenter);
 
         Instrumentation instrumentation = InstrumentationRegistry.getInstrumentation();
         AppTest app = (AppTest) instrumentation.getTargetContext().getApplicationContext();
@@ -61,23 +58,24 @@ public class ProductListActivityTest {
     }
 
     @Test
-    public void showProductList () {
+    public void showProductDetail () {
         activity.launchActivity(new Intent());
         activity.getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                List<Product> productList = new ArrayList<>();
-                productList.add(new Product("0", "Product Test", 1000, "3 mesos d'antiguitat", "user@email.com"));
-                activity.getActivity().showData(productList);
+                Product product = new Product("0", "Product Test", 1000, "3 mesos d'antiguitat", "user@email.com");
+                activity.getActivity().showData(product);
             }
         });
-        onView(withId(R.id.productName)).check(matches(withText("Product Test")));
-        onView(withId(R.id.productPrice)).check(matches(withText("1000€")));
+        onView(withId(R.id.nameText)).check(matches(withText("Product Test")));
+        onView(withId(R.id.priceText)).check(matches(withText("1000€")));
+        onView(withId(R.id.ownerText)).check(matches(withText("user@email.com")));
+        onView(withId(R.id.descriptionText)).check(matches(withText("3 mesos d'antiguitat")));
     }
 
 
     @Test
-    public void showProductListFailure () {
+    public void showProductDetailFailure () {
         activity.launchActivity(new Intent());
         activity.getActivity().runOnUiThread(new Runnable() {
             @Override
