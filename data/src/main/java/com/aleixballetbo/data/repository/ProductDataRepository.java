@@ -38,4 +38,9 @@ public class ProductDataRepository implements ProductRepository{
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void addProduct(Product product, AddProductCallback callback) {
+
+    }
 }

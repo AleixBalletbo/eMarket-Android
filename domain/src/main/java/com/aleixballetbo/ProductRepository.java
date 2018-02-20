@@ -12,7 +12,11 @@ public interface ProductRepository {
 
     interface GetProductDetailCallback extends DefaultCallback<Product> {}
 
+    interface AddProductCallback extends DefaultCallback<Void> {}
+
     void getProducts(GetProductsCallback callback);
 
     void getProductDetail(String productId, GetProductDetailCallback callback);
+
+    void addProduct(Product product, AddProductCallback callback);
 }

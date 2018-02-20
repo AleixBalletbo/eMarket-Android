@@ -21,7 +21,8 @@
         </activity>
         <activity
             android:name=".ProductDetail.ProductDetailActivity"
-            android:parentActivityName=".ProductList.ProductListActivity"/>
+            android:parentActivityName=".ProductList.ProductListActivity" />
+        <activity android:name=".AddProduct.AddProductActivity"></activity>
     </application>
 
 </manifest>

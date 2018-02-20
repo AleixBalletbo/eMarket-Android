@@ -1,5 +1,6 @@
 package com.aleixballetbo.emarket.dependencyinjection.activity;
 
+import com.aleixballetbo.emarket.AddProduct.AddProductActivity;
 import com.aleixballetbo.emarket.ProductDetail.ProductDetailActivity;
 import com.aleixballetbo.emarket.ProductList.ProductListActivity;
 import com.aleixballetbo.emarket.dependencyinjection.application.ViewPresenterModule;
@@ -14,4 +15,6 @@ public interface ActivityComponent {
     void inject(ProductListActivity activity);
 
     void inject(ProductDetailActivity activity);
+
+    void inject(AddProductActivity activity);
 }
