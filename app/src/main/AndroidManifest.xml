@@ -22,7 +22,8 @@
         <activity
             android:name=".ProductDetail.ProductDetailActivity"
             android:parentActivityName=".ProductList.ProductListActivity" />
-        <activity android:name=".AddProduct.AddProductActivity"></activity>
+        <activity android:name=".AddProduct.AddProductActivity"
+            android:parentActivityName=".ProductList.ProductListActivity"/>
     </application>
 
 </manifest>

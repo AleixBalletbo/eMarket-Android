@@ -1,6 +1,9 @@
 package com.aleixballetbo.emarket.ProductList;
 
 
+import android.content.Context;
+
+import com.aleixballetbo.emarket.AddProduct.AddProductActivity;
 import com.aleixballetbo.entities.Product;
 import com.aleixballetbo.exception.ErrorBundle;
 import com.aleixballetbo.interactor.GetProductsInteractor;
@@ -28,5 +31,9 @@ public class ProductListPresenter {
                 view.showData(returnParam);
             }
         });
+    }
+
+    public void openAddProduct (Context context) {
+        AddProductActivity.actionOpenAddProduct(context, null);
     }
 }

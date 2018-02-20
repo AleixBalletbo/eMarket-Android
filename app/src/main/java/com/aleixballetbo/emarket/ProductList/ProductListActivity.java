@@ -2,6 +2,7 @@ package com.aleixballetbo.emarket.ProductList;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,11 +20,14 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class ProductListActivity extends AppCompatActivity implements ProductListView {
 
     @BindView(R.id.productList)
     RecyclerView productList;
+    @BindView(R.id.addProductButton)
+    FloatingActionButton addButton;
 
     @Inject
     ProductListPresenter presenter;
@@ -50,6 +54,11 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
 
         setUpRecyclerView();
         presenter.onStart();
+    }
+
+    @OnClick(R.id.addProductButton)
+    public void addProduct () {
+        presenter.openAddProduct(context);
     }
 
     private void setUpRecyclerView () {
