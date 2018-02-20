@@ -1,10 +1,16 @@
 package com.aleixballetbo.emarket.AddProduct;
 
-import com.aleixballetbo.entities.Product;
-
 public interface AddProductView {
 
-    void onSuccess(Product products);
+    void onSuccess();
 
     void showError(String error);
+
+    void showErrorProductName (String error);
+
+    void showErrorProductPrice (String error);
+
+    void showErrorProductOwner (String error);
+
+    void showErrorProductDescription (String error);
 }
