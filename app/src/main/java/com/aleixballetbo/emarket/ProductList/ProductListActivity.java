@@ -53,6 +53,12 @@ public class ProductListActivity extends AppCompatActivity implements ProductLis
         presenter.onStart();
     }
 
+    @Override
+    protected void onResume () {
+        super.onResume();
+        presenter.onStart();
+    }
+
     @OnClick(R.id.addProductButton)
     public void addProduct () {
         presenter.openAddProduct(context);

@@ -38,7 +38,7 @@ public class AddProductPresenter {
             addProductInteractor.execute(product, new AddProductInteractor.AddProductCallback() {
                 @Override
                 public void onError(ErrorBundle errorBundle) {
-
+                    view.showError(errorBundle.getErrorMessage());
                 }
 
                 @Override

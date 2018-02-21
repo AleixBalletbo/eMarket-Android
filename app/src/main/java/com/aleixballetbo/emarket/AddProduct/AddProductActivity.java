@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.aleixballetbo.emarket.App;
 import com.aleixballetbo.emarket.R;
@@ -73,7 +74,8 @@ public class AddProductActivity extends AppCompatActivity implements AddProductV
 
     @Override
     public void showError(String error) {
-
+        Toast t = Toast.makeText(getApplicationContext(), error, Toast.LENGTH_LONG);
+        t.show();
     }
 
     @Override

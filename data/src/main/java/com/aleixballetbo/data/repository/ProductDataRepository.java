@@ -41,6 +41,12 @@ public class ProductDataRepository implements ProductRepository{
 
     @Override
     public void addProduct(Product product, AddProductCallback callback) {
-
+        try {
+            dataSource.addProduct(product);
+            callback.onSuccess(null);
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

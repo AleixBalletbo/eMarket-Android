@@ -33,4 +33,9 @@ public class ApiDataSource implements DataSource {
         Response<ProductDTO> productResponse = productService.getProductDetail(productId).execute();
         return Mapper.map(productResponse.body());
     }
+
+    @Override
+    public void addProduct(Product product) throws IOException {
+        Response<Void> addProductResponse = productService.postProduct(product).execute();
+    }
 }
