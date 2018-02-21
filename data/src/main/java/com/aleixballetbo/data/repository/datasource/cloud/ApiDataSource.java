@@ -25,17 +25,26 @@ public class ApiDataSource implements DataSource {
     @Override
     public List<Product> getProducts() throws IOException {
         Response<List<ProductDTO>> productsResponse = productService.getProducts().execute();
+        if (!productsResponse.isSuccessful()) {
+            throw new IOException();
+        }
         return Mapper.map(productsResponse.body());
     }
 
     @Override
     public Product getProductDetail(String productId) throws IOException {
         Response<ProductDTO> productResponse = productService.getProductDetail(productId).execute();
+        if (!productResponse.isSuccessful()) {
+            throw new IOException();
+        }
         return Mapper.map(productResponse.body());
     }
 
     @Override
     public void addProduct(Product product) throws IOException {
         Response<Void> addProductResponse = productService.postProduct(product).execute();
+        if (!addProductResponse.isSuccessful()) {
+            throw new IOException();
+        }
     }
 }

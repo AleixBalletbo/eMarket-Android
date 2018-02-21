@@ -4,6 +4,7 @@ package com.aleixballetbo.data.repository;
 import com.aleixballetbo.ProductRepository;
 import com.aleixballetbo.data.repository.datasource.DataSource;
 import com.aleixballetbo.entities.Product;
+import com.aleixballetbo.exception.ErrorBundle;
 
 import java.io.IOException;
 import java.util.List;
@@ -24,8 +25,19 @@ public class ProductDataRepository implements ProductRepository{
         try {
             List<Product> productList = dataSource.getProducts();
             callback.onSuccess(productList);
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (final IOException e) {
+            ErrorBundle errorBundle = new ErrorBundle() {
+                @Override
+                public Exception getException() {
+                    return e;
+                }
+
+                @Override
+                public String getErrorMessage() {
+                    return "No s'ha pogut carregar la llista de productes";
+                }
+            };
+            callback.onError(errorBundle);
         }
     }
 
@@ -34,8 +46,19 @@ public class ProductDataRepository implements ProductRepository{
         try {
             Product product = dataSource.getProductDetail(productId);
             callback.onSuccess(product);
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (final IOException e) {
+            ErrorBundle errorBundle = new ErrorBundle() {
+                @Override
+                public Exception getException() {
+                    return e;
+                }
+
+                @Override
+                public String getErrorMessage() {
+                    return "No s'ha pogut carregar el detall d'aquest producte";
+                }
+            };
+            callback.onError(errorBundle);
         }
     }
 
@@ -45,8 +68,19 @@ public class ProductDataRepository implements ProductRepository{
             dataSource.addProduct(product);
             callback.onSuccess(null);
         }
-        catch (IOException e) {
-            e.printStackTrace();
+        catch (final IOException e) {
+            ErrorBundle errorBundle = new ErrorBundle() {
+                @Override
+                public Exception getException() {
+                    return e;
+                }
+
+                @Override
+                public String getErrorMessage() {
+                    return "No s'ha pogut afegir aquest producte";
+                }
+            };
+            callback.onError(errorBundle);
         }
     }
 }
