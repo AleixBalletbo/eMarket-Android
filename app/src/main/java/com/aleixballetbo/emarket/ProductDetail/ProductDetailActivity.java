@@ -79,6 +79,6 @@ public class ProductDetailActivity extends AppCompatActivity implements ProductD
     public void showError(String error) {
         Toast t = Toast.makeText(getApplicationContext(), error, Toast.LENGTH_LONG);
         t.show();
-        finish();
+        //finish();
     }
 }
