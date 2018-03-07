@@ -16,6 +16,7 @@ android {
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
+        //testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         testInstrumentationRunner "com.aleixballetbo.emarket.EspressoTestRunner"
     }
     buildTypes {
@@ -70,11 +71,10 @@ sonarqube {
         property "sonar.projectName", "eMarketAndroid"
         property "sonar.projectKey", "my:eMarketAndroid"
         property "sonar.projectVersion", "1.0"
-        property "sonar.tests", "src/test/java/com/aleixballetbo/emarket/"
-        property "sonar.sources", "src/main"
+        property "sonar.tests", "./src/test/, ./src/androidTest/"
+        property "sonar.sources", "./src/main"
         property "sonar.java.binaries", "build/intermediates/classes/debug"
-        property "sonar.jacoco.reportPath", fileTree(dir: project.projectDir, includes: ['**/*.exec'])
-        property "sonar.jacoco.itReportPath", fileTree(dir: project.projectDir, includes: ['**/*.ec'])
+        property "sonar.jacoco.reportPaths", fileTree(dir: project.projectDir, includes: ['**/*.exec', '**/*.ec'])
     }
 }
 
